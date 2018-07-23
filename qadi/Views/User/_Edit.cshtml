@@ -1,0 +1,10 @@
+﻿@using qadi.Models
+@model UserViewModel
+
+<tr>
+    <form method="post" action="@Url.Action("Edit", "User")">
+        <input asp-for="@Model.user.id" type="hidden" />
+        <td><input asp-for="@Model.user.name" value="@Model.user.name" placeholder="Name" /></td>
+        <td><input type="submit" value="OK" /></td>
+    </form>
+</tr>

@@ -1,0 +1,51 @@
+﻿@using qadi.Models
+@model login
+
+
+<html>
+<head>
+    <title>Team Lead Login</title>
+    <link rel="stylesheet" href="/login.css" />
+</head>
+<body>
+    <div class="back"></div>
+
+    <script type="text/javascript">
+        var images = ['airport.jpg', 'aquarium.png', 'atlanta.jpg', 'benz.jpg', 'bobby_dodd.jpg', 'centennial.JPG', 'city.jpg', 'coke.jpg', 'dusk.jpg',
+        'fox.jpg', 'goal.jpg', 'high.jpg', 'lenox.jpg', 'piedmont.jpg', 'snow.jpg', 'stone.jpeg', 'tech_tower.jpeg', 'towerPlace.jpg'];
+
+        document.getElementsByClassName('back')[0].style.backgroundImage = 'url(/' + images[Math.floor(Math.random() * images.length)] + ')';
+    </script>
+
+    <div class="loginBox">
+        <img src="/white_logo.jpg" class="logo" />
+        @*@if (Model != null)
+        {
+        @*<partial name="_Buttons" style="vertical-align: middle;"/>
+        } else {*@
+
+        <h2>QA Team Lead Login</h2>
+
+        <form method="post">
+            <p>Username</p>
+            <input asp-for="username" placeholder="Enter Username" />
+            <p>Password</p>
+            <input asp-for="password" type="password" placeholder="Enter Password" />
+            <input type="submit" value="Login" />
+        </form>
+    </div>
+
+
+    <div class="footer" align="center">
+        <br />
+        <input type="submit" value="Back to Home Page" onclick=location.href="/CiCo/Prologue" />
+        <br /><br />
+    </div>
+
+    
+</body>
+
+
+
+
+</html>

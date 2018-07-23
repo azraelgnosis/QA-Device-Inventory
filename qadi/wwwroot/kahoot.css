@@ -1,0 +1,53 @@
+
+p{
+    font-family: "Arial", Arial, sans serif;
+    font-size: x-large;
+    color: white;
+}
+
+/*------------------------------------------*/
+
+body{
+    background-color: #0066A4;
+}
+
+form{
+    margin-top:10%;
+}
+
+/*-------------------------------------*/
+
+input[type=text] {
+    padding: 12px 20px;
+    font-size: x-large;
+    text-align: center;
+    width: 300px;
+}
+
+input[type=text]:focus {
+    outline: none; /* gets rid of blue selected outline*/
+    border: 1px solid black;
+}
+
+/*-----------------------------------------------------*/
+
+input[type=submit] {
+    font-size: x-large;
+    background-color: #e7e7e7;
+    color: black;
+    outline: none;
+    border: white;
+    border-radius: 4px;
+    padding: 10px 24px;
+    box-shadow: 7px 7px black;
+}
+
+input[type=submit]:hover{
+    background-color: #c7c7c7;
+}
+
+input[type=submit]:active{
+    background-color: #c7c7c7;
+    box-shadow: 3px 3px black;
+    transform: translateY(4px);
+}

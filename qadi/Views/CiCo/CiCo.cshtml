@@ -1,0 +1,54 @@
+﻿@using qadi.Models
+@model DeviceViewModel
+
+<html>
+<head>
+    <title>@Model.name's Devices</title>
+    <link rel="stylesheet" href="~/columns.css" />
+</head>
+<body>
+    <header align="center" class="header">
+        <h1 style="vertical-align: middle;">
+            <img src="/qgenda.jpg" alt="qgenda" style="width:100px;height:100px; vertical-align: middle;">
+            <span style="font-size: xx-large;">QA Device Inventory</span>
+        </h1>
+    </header>
+
+    <div class="row">
+        <div class="column1" align="center">
+            <h2>Available Devices</h2>
+            <div>
+                <form method="post" action="@Url.Action("CheckedIn", "CiCo" )">
+                    @Html.ListBoxFor(m => m.SelectedDevices, Model.CheckedInSelectList, new { size = 10, style="width:400px" })
+                    <span asp-validation-for="SelectedDevices"></span>
+                    <input asp-for="name" type="hidden" /><br /><br />
+                    <input type="submit" value="Check Out" />
+                </form>
+            </div>
+        </div>
+
+
+        <div class="column2" align="center">
+            <h2>Your Devices</h2>
+            <div>
+                <form method="post" action="@Url.Action("CheckedOut", "CiCo" )">
+                    @Html.ListBoxFor(m => m.SelectedDevices, Model.CheckedOutSelectList, new { size = 10, style = "width:400px" })
+                    <input asp-for="name" type="hidden" /><br /><br />
+                    <input type="submit" value="Check In" />
+                </form>
+            </div>
+        </div>
+    </div>
+    @{ var pageID = Url.ActionContext.RouteData.Values["id"];
+        if (pageID != null && pageID.ToString() == "-2"){ <td><div>Must select an item to check in</div></td>}
+    }
+    <div class="footer">
+        <br>
+
+        <input type="submit" onclick=location.href='/CiCo/Prologue' value="Return to Sign In Page" />
+        <br>
+        <br>
+    </div>
+
+</body>
+</html>

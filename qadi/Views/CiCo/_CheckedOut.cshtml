@@ -1,0 +1,11 @@
+﻿@using qadi.Models
+@model DeviceViewModel
+
+<div>
+    <h2>Checked Out</h2>
+    <form method="post" action="@Url.Action("CheckedOut", "CiCo")">
+        @Html.ListBoxFor(m => m.SelectedDevices, Model.CheckedOutSelectList, new { size = 10 })
+        <input asp-for="name" type="hidden" />
+        <input type="submit" value="Check In" />
+    </form>
+</div>

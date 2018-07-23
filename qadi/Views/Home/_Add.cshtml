@@ -1,0 +1,42 @@
+﻿@using qadi.Models
+@model DeviceViewModel
+
+<tr>
+    <form method="post" action="@Url.Action("Add", "Home")">
+        @*@{ int min = 0;
+            for (int i = 0; i <= Model.idList.Count(); i++) {
+                if (!Model.idList.Contains(i)) {
+                    min = i;
+                    break;
+                }
+            }
+        }
+        <input asp-for="@Model.device.id" value="@min" type="hidden"/>*@
+        <td><input asp-for="@Model.device.deviceID" value="" placeholder="Device ID" /></td>
+        <td><input asp-for="@Model.device.serialNo" value="" placeholder="Serial No." /></td>
+        <td><input asp-for="@Model.device.make" value="" placeholder="Make" /></td>
+        <td><input asp-for="@Model.device.model" value="" placeholder="Model" /></td>
+        <td>
+            <select asp-for="@Model.device.os" asp-items="@Html.GetEnumSelectList<OS>()">
+                <option>Choose OS</option>
+            </select>
+        </td>
+        <td>
+            <select asp-for="@Model.device.type" asp-items="@Html.GetEnumSelectList<DeviceType>()">
+                <option>Choose Type</option>
+            </select>
+        </td>
+        <td>
+            <select asp-for="@Model.device.availability" asp-items="@Html.GetEnumSelectList<Availability>()">
+                <option>Choose Availability</option>
+            </select>
+        </td>
+        @*<td><input asp-for="@Model.device.user" value="" placeholder="User" /></td>*@
+        <td>
+            <select asp-for="@Model.device.user" asp-items="@Model.usersEnum">
+                <option>Select User</option>
+            </select>
+        </td>
+        <td><input type="submit" name="add" value="Add" /></td>
+    </form>
+</tr>

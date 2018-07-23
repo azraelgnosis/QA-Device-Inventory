@@ -1,0 +1,41 @@
+﻿@using qadi.Models
+@model DeviceViewModel
+
+<html>
+<head><title>QA Device Inventory</title>
+    <link rel="stylesheet" href="/login.css" />
+@*<link rel="stylesheet" href="~/kahoot.css" />*@
+</head>
+<body>
+    <div class="back"></div>
+
+    <script type="text/javascript">
+        var images = ['airport.jpg', 'aquarium.png', 'atlanta.jpg', 'benz.jpg', 'bobby_dodd.jpg', 'centennial.JPG', 'city.jpg', 'coke.jpg', 'dusk.jpg', 
+        'fox.jpg', 'goal.jpg', 'high.jpg', 'lenox.jpg', 'piedmont.jpg', 'snow.jpg', 'stone.jpeg', 'tech_tower.jpeg', 'towerPlace.jpg'];
+
+        document.getElementsByClassName('back')[0].style.backgroundImage = 'url(/' + images[Math.floor(Math.random() * images.length)] + ')';
+    </script>
+
+    <div class="loginBox">
+        <img src="/white_logo.jpg" class="logo" />
+        <h2>QA Device Inventory</h2>
+        <form method="post" align="center">
+            @*<img src="/qgenda.jpg" alt="QGenda" style="width:200px; height:200px;" />*@
+            @*<p>QA DEVICE INVENTORY</p>*@
+            @*<input asp-for="name" placeholder="Name" />*@
+            <select asp-for="name" asp-items="@Model.usersEnum" id="mainselection">
+                <option>Choose Name</option>
+            </select>
+            <br /><br /><br />
+            <input type="submit" value="View Devices" />
+        </form>
+    </div>
+
+    <div class="footer" align="center">
+        <br />
+            <input type="submit" value="Device Inventory" onclick=location.href='/CiCo/login/1' />
+            <input type="submit" value="User List" onclick=location.href='/CiCo/login/2' />
+        <br /><br />
+    </div>
+</body>
+</html>

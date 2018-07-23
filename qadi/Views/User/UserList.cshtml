@@ -1,0 +1,50 @@
+﻿@using qadi.Models
+@model UserViewModel
+
+<html>
+<head>
+    <title>User List</title>
+    <link href="/style.css" rel="stylesheet" />
+</head>
+<body align="center">
+    <input type="submit" onclick=location.href="/CiCo/Prologue" value="In-and-Out Portal" />
+    <input type="submit" onclick=location.href="/Home/Index" value="Device List" /><br /><br />
+
+    <table style="width: 300px;" align="center">
+        @{ var ID = Url.ActionContext.RouteData.Values["id"];
+            if (ID != null && ID.ToString() == "-1") { <div>Can't remove user with checked out devices.</div>}
+            if(ID != null && ID.ToString() == "-2") { <div>User already exists.</div>}
+            }
+
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ var editID = Url.ActionContext.RouteData.Values["id"];
+                foreach (User user in Model.users)
+                {
+                    if (editID != null && user.id.ToString() == editID.ToString())
+                    {
+                        Model.user = user;
+                        @await Html.PartialAsync("_Edit", Model)
+                    }
+                    else { 
+                <tr>
+                    <td>@user.name</td>
+                    <td><input type="submit" onclick=location.href="/User/UserList/@user.id" value="Edit" /></td>
+                    <td><input type="submit" onclick=location.href="/User/Remove/@user.id" value="Remove" /> </td>
+                </tr>
+                    }
+                }
+                }
+        </tbody>
+
+        <tfoot>
+            @await Html.PartialAsync("_Add")
+        </tfoot>
+    </table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@using qadi.Models
+@model DeviceViewModel
+
+<tr>
+    <form method="post" action="~/Home/Edit">
+        <input asp-for="@Model.device.id" placeholder="ID" type="hidden"/>
+        <td><input asp-for="@Model.device.deviceID" placeholder="Device ID" /></td>
+        <td><input asp-for="@Model.device.serialNo" placeholder="Serial No." /></td>
+        <td><input asp-for="@Model.device.make" placeholder="Make" /></td>
+        <td><input asp-for="@Model.device.model" placeholder="Model" /></td>
+        <td>
+            <select asp-for="@Model.device.os" asp-items="@Html.GetEnumSelectList<OS>()">
+                <option>Choose OS</option>
+            </select>
+        </td>
+        <td>
+            <select asp-for="@Model.device.type" asp-items="@Html.GetEnumSelectList<DeviceType>()">
+                <option>Choose Type</option>
+            </select>
+        </td>
+        <td><select asp-for="@Model.device.availability" asp-items="@Html.GetEnumSelectList<Availability>()">
+                <option>Choose Availability</option>
+            </select>
+        </td>
+        @*<td><input asp-for="@Model.device.user" /></td>*@
+        <td><select asp-for="@Model.device.user" asp-items="@Model.usersEnum">
+            <option>Select User</option>
+        </select></td>
+        <input type="hidden" name="@Model.idList" value="@Model.idList" />
+        <input asp-for="idList" value="@Model.idList" type="hidden" />
+        <td><input type="submit" name="edit" value="OK" /></td>
+    </form>
